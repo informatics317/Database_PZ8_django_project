@@ -1,0 +1,19 @@
+<div class="col-12 col-lg-6">
+  <div class="card">
+    <div class="card-header"><h3 class="card-title">{{ title }}</h3></div>
+    <div class="card-body">
+      <div id="{{ chart_id }}"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  new ApexCharts(document.getElementById('{{ chart_id }}'), {
+    chart: { type: 'donut', height: 300 },
+    series: [{% for number in values %}{{ number }}, {% endfor %}],
+    labels: [{% for name in labels %}'{{ name }}', {% endfor %}],
+    legend: { position: 'bottom' },
+    noData: { text: 'Нет данных' }
+  }).render();
+</script>
+

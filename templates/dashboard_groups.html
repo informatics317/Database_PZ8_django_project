@@ -1,0 +1,19 @@
+{% extends 'dashboard_base.html' %}
+{% block title %}Дашборд: группы{% endblock %}
+{% block dashboard_title %}Дашборд: группы{% endblock %}
+{% block dashboard %}
+
+{% include 'components/department_filter.html' %}
+
+<div class="row row-cards mb-3">
+    {% include 'components/stat_card.html' with title='Учебных групп' value=groups_count %}
+    {% include 'components/stat_card.html' with title='Студентов' value=students_count %}
+    {% include 'components/stat_card.html' with title='Студентов без группы' value=no_group_count %}
+</div>
+
+<div class="row row-cards">
+    {% include 'components/bar_chart.html' with title='Группы по факультетам' chart_id='departments-chart' labels=department_names values=department_numbers %}
+    {% include 'components/bar_chart.html' with title='Студенты по группам' chart_id='groups-chart' labels=group_names values=group_numbers %}
+</div>
+
+{% endblock %}

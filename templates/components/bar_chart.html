@@ -1,0 +1,18 @@
+<div class="col-12 col-lg-6">
+  <div class="card">
+    <div class="card-header"><h3 class="card-title">{{ title }}</h3></div>
+    <div class="card-body">
+      <div id="{{ chart_id }}"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  new ApexCharts(document.getElementById('{{ chart_id }}'), {
+    chart: { type: 'bar', height: 300 },
+    series: [{ name: 'Количество', data: [{% for number in values %}{{ number }}, {% endfor %}] }],
+    xaxis: { categories: [{% for name in labels %}'{{ name }}', {% endfor %}] },
+    noData: { text: 'Нет данных' }
+  }).render();
+</script>
+

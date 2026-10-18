@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+
+<h1 class="mb-3">Профиль пользователя</h1>
+
+<div class="card">
+    <div class="card-body">
+        <p>Имя пользователя: <strong>{{ user.username }}</strong></p>
+
+        <p>Статус:
+            {% if user.is_superuser %}
+                <span class="badge bg-red-lt">Администратор</span>
+            {% elif is_methodist %}
+                <span class="badge bg-green-lt">Методист</span>
+            {% else %}
+                <span class="badge bg-blue-lt">Студент</span>
+            {% endif %}
+        </p>
+
+        <a class="btn btn-primary" href="/courses/">Посмотреть курсы</a>
+    </div>
+</div>
+
+{% endblock %}
+

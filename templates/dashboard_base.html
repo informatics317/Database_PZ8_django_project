@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<script src="{% static 'vendor/tabler/libs/apexcharts/apexcharts.min.js' %}"></script>
+
+<h1 class="mb-3">{% block dashboard_title %}Дашборды{% endblock %}</h1>
+
+{% include 'components/dashboard_nav.html' %}
+
+{% block dashboard %}{% endblock %}
+
+{% endblock %}
+

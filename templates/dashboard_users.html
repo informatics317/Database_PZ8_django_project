@@ -1,0 +1,15 @@
+{% extends 'dashboard_base.html' %}
+
+{% block dashboard %}
+<div class="row row-cards mb-3">
+  {% include 'components/stat_card.html' with title='Всего пользователей' value=users_count %}
+  {% include 'components/stat_card.html' with title='Администраторы' value=admins %}
+  {% include 'components/stat_card.html' with title='Методисты' value=methodists %}
+  {% include 'components/stat_card.html' with title='Студенты' value=students %}
+</div>
+
+<div class="row row-cards">
+  {% include 'components/donut_chart.html' with title='Роли пользователей' chart_id='chart1' labels=role_names values=role_numbers %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+<form method="get" class="row g-2 mb-3">
+    <div class="col-12 col-sm-6 col-md-4">
+        <select name="department" class="form-select" onchange="this.form.submit()">
+            <option value="">Все факультеты</option>
+            {% for department in all_departments %}
+                <option value="{{ department.id }}"
+                    {% if department.id|stringformat:"s" == department_id %}selected{% endif %}>
+                    {{ department.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</form>
+

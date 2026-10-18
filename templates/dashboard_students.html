@@ -1,0 +1,19 @@
+{% extends 'dashboard_base.html' %}
+{% block title %}Дашборд: студенты{% endblock %}
+{% block dashboard_title %}Дашборд: студенты{% endblock %}
+{% block dashboard %}
+
+{% include 'components/department_filter.html' %}
+
+<div class="row row-cards mb-3">
+    {% include 'components/stat_card.html' with title='Студентов' value=students_count %}
+    {% include 'components/stat_card.html' with title='Без курсов' value=no_courses_count %}
+</div>
+
+<div class="row row-cards">
+    {% include 'components/donut_chart.html' with title='Студенты по факультетам' chart_id='departments-chart' labels=department_names values=department_numbers %}
+    {% include 'components/bar_chart.html' with title='Студенты по числу курсов' chart_id='courses-chart' labels=courses_names values=courses_numbers %}
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Учебное приложение{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'vendor/tabler/css/tabler.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blue.css' %}">
+
+</head>
+<body>
+<div class="page">
+
+    <header class="navbar navbar-expand-md" data-bs-theme="dark">
+        <div class="container-xl">
+            <a class="navbar-brand" href="/profile/">DjangoApp</a>
+
+            {% if user.is_authenticated %}
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <div class="navbar-nav me-auto">
+                    <a class="nav-link" href="/profile/">Профиль</a>
+                    <a class="nav-link" href="/courses/">Курсы</a>
+                    <a class="nav-link" href="/departments/">Факультеты</a>
+                    <a class="nav-link" href="/groups/">Группы</a>
+                    <a class="nav-link" href="/dashboard/">Дашборды</a>
+                    <a class="nav-link" href="/">Заявки</a>
+                </div>
+
+                <span class="navbar-text me-3">{{ user.username }}</span>
+                <form method="post" action="/accounts/logout/">
+                    {% csrf_token %}
+                    <button class="btn btn-light btn-sm" type="submit">
+                        Выйти
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="page-body">
+            <div class="container-xl">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="{% static 'vendor/tabler/js/tabler.min.js' %}"></script>
+
+</body>
+</html>

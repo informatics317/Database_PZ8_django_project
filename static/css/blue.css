@@ -1,0 +1,55 @@
+:root {
+    --tblr-primary: #1d6fdc;
+    --tblr-primary-rgb: 29, 111, 220;
+    --tblr-body-bg: #eaf3ff;
+    --tblr-link-color: #1d6fdc;
+}
+
+
+header.navbar {
+    background: linear-gradient(90deg, #0b3c8c, #1d6fdc);
+    box-shadow: 0 2px 8px rgba(11, 60, 140, 0.35);
+}
+
+
+h1, h2 {
+    color: #0b3c8c;
+}
+
+
+.card {
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(29, 111, 220, 0.15);
+}
+
+
+.table thead th {
+    background-color: #d6e7ff;
+    color: #0b3c8c;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f7ff;
+}
+
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #1d6fdc;
+    box-shadow: 0 0 0 0.2rem rgba(29, 111, 220, 0.25);
+}
+
+
+@media (max-width: 767px) {
+    header.navbar .navbar-text {
+        display: block;
+        padding-top: 0.5rem;
+    }
+
+    header.navbar form {
+        padding-bottom: 0.75rem;
+    }
+}
+
+

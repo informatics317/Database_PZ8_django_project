@@ -1,0 +1,20 @@
+{% extends 'dashboard_base.html' %}
+{% block title %}Дашборд: курсы{% endblock %}
+{% block dashboard_title %}Дашборд: курсы{% endblock %}
+{% block dashboard %}
+
+{% include 'components/department_filter.html' %}
+
+<div class="row row-cards mb-3">
+    {% include 'components/stat_card.html' with title='Всего курсов' value=courses_count %}
+    {% include 'components/stat_card.html' with title='Курсов без описания' value=no_description_count %}
+    {% include 'components/stat_card.html' with title='Записей на курсы' value=enrollments_count %}
+</div>
+
+<div class="row row-cards">
+    {% include 'components/bar_chart.html' with title='Курсы по факультетам' chart_id='departments-chart' labels=department_names values=department_numbers %}
+    {% include 'components/bar_chart.html' with title='Студенты по курсам' chart_id='courses-chart' labels=course_names values=course_numbers %}
+</div>
+
+{% endblock %}
+
