@@ -51,6 +51,9 @@ function showMessage(text, isError = false) {
 }
 
 function formatError(error) {
+    if (error instanceof TypeError) {
+        return "Сервер временно недоступен. Проверьте подключение к интернету и попробуйте позже.";
+    }
     let data;
 
     try {
