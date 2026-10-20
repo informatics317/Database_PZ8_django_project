@@ -79,6 +79,33 @@
             <div id="message" role="status"
                  aria-live="polite"></div>
 
+                        <div class="row row-cards mb-4">
+                <div class="col-12 col-md-4">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="h1 mb-1" id="stat-total">0</div>
+                            <div class="text-secondary">Всего заявок</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="h1 mb-1" id="stat-progress">0</div>
+                            <div class="text-secondary">В работе</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="h1 mb-1" id="stat-done">0</div>
+                            <div class="text-secondary">Выполнено</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card mb-4">
                 <div class="card-body">
                     <form id="ticket-form">
@@ -114,13 +141,25 @@
                 </div>
 
                 <div class="card-body">
-                    <select id="status-filter"
-                            class="form-select mb-3">
-                        <option value="">Все статусы</option>
-                        <option value="new">Новые</option>
-                        <option value="progress">В работе</option>
-                        <option value="done">Выполненные</option>
-                    </select>
+                    <div class="row g-2 mb-3">
+                        <div class="col-12 col-md">
+                            <input type="search" id="search-input"
+                                   class="form-control"
+                                   placeholder="Поиск заявок...">
+                        </div>
+                        <div class="col-12 col-md-auto">
+                            <select id="status-filter" class="form-select">
+                                <option value="">Все статусы</option>
+                                <option value="new">Новые</option>
+                                <option value="progress">В работе</option>
+                                <option value="done">Выполненные</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="search-empty" class="text-secondary mb-3" hidden>
+                        Ничего не найдено
+                    </div>
 
                     <div id="loading" hidden>
                         Загрузка данных...

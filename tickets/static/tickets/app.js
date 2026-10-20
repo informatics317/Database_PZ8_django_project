@@ -254,10 +254,53 @@ async function loadTickets() {
         );
     } finally {
         loading.hidden = true;
+        applySearch();
+        loadStats();
     }
 }
 
 filter.addEventListener("change", loadTickets);
+
+const searchInput = document.getElementById("search-input");
+const searchEmpty = document.getElementById("search-empty");
+const statTotal = document.getElementById("stat-total");
+const statProgress = document.getElementById("stat-progress");
+const statDone = document.getElementById("stat-done");
+
+async function loadStats() {
+    try {
+        const tickets = await apiRequest("/api/tickets/");
+
+        statTotal.textContent = tickets.length;
+        statProgress.textContent =
+            tickets.filter((t) => t.status === "progress").length;
+        statDone.textContent =
+            tickets.filter((t) => t.status === "done").length;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function applySearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    const rows = list.querySelectorAll(":scope > div");
+    let shown = 0;
+
+    for (const row of rows) {
+        const text = row.children[0].textContent.toLowerCase();
+
+        if (text.includes(query)) {
+            row.style.removeProperty("display");
+            shown++;
+        } else {
+            row.style.setProperty("display", "none", "important");
+        }
+    }
+
+    searchEmpty.hidden = !(query !== "" && rows.length > 0 && shown === 0);
+}
+
+searchInput.addEventListener("input", applySearch);
 
 async function initialize() {
     try {
