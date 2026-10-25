@@ -1,0 +1,110 @@
+{% load static %}
+<!Doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Бронирование оборудования</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+    <link rel="stylesheet" href="{% static 'css/blue.css' %}">
+</head>
+
+<body>
+<div class="page">
+    <header class="navbar navbar-expand-md" data-bs-theme="dark">
+        <div class="container-xl">
+            <a class="navbar-brand" href="/profile/">DjangoApp</a>
+
+            <div class="ms-auto d-flex align-items-center gap-2">
+                <span class="navbar-text me-2">{{ user.username }}</span>
+
+                <a class="btn btn-light btn-sm" href="/profile/">
+                    Вернуться на главную
+                </a>
+
+                <form method="post" action="/accounts/logout/">
+                    {% csrf_token %}
+                    <button class="btn btn-light btn-sm" type="submit">
+                        Выйти
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <div class="container-xl py-4">
+
+            <h1 class="mb-4">Бронирование оборудования</h1>
+
+            {% csrf_token %}
+
+            <div id="message" role="status" aria-live="polite"></div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form id="booking-form">
+                        <div class="row g-3">
+                            <div class="col-12 col-md-4">
+                                <label class="form-label">Оборудование</label>
+                                <select id="equipment" class="form-select" required></select>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <label class="form-label">Количество</label>
+                                <input id="quantity" type="number" min="1" value="1"
+                                       class="form-control" required>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label">Цель бронирования</label>
+                                <input id="purpose" class="form-control" required>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary mt-3" type="submit">
+                            Забронировать
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="card-title">Список бронирований</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row g-2 mb-3">
+                        <div class="col-12 col-md-6">
+                            <select id="filter-status" class="form-select">
+                                <option value="">Все статусы</option>
+                                <option value="created">Создана</option>
+                                <option value="confirmed">Подтверждена</option>
+                                <option value="completed">Завершена</option>
+                                <option value="cancelled">Отменена</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <select id="filter-equipment" class="form-select"></select>
+                        </div>
+                    </div>
+
+                    <div id="loading" hidden>Загрузка данных...</div>
+                    <div id="bookings-list" class="list-group"></div>
+                </div>
+            </div>
+
+            <div class="card" id="history-card" hidden>
+                <div class="card-header">
+                    <h2 class="card-title" id="history-title"></h2>
+                </div>
+                <ul class="list-group list-group-flush" id="history-list"></ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+<script src="{% static 'bookings/app.js' %}"></script>
+</body>
+</html>

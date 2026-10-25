@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'tickets',
+    'bookings',
 ]
 
 
