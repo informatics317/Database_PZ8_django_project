@@ -4,23 +4,23 @@
 
 
 
-### 1\. Git не клонирует: папка уже есть
+### 1. Git не клонирует: папка уже есть
 
-**Что видно:** `fatal: destination path 'django\\\_auth' already exists and is not an empty directory.`
+**Что видно:** `fatal: destination path 'django_auth' already exists and is not an empty directory.`
 
 **Почему:** на компьютере уже есть папка с таким именем.
 
 **Что делать:** клонировать под другим именем и проверить папки командой `dir`:
 
 ```
-git clone https://github.com/informatics317/Database\\\_PZ8\\\_django\\\_project.git django\\\_auth\\\_new
-cd django\\\_auth\\\_new
+git clone https://github.com/informatics317/Database_PZ8_django_project.git django_auth_new
+cd django_auth_new
 dir
 ```
 
 
 
-### 2\. PowerShell не активирует окружение
+### 2. PowerShell не активирует окружение
 
 **Что видно:** выполнение скриптов отключено в этой системе.
 
@@ -30,14 +30,14 @@ dir
 
 ```
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\\\\.venv\\\\Scripts\\\\Activate.ps1
+.\\.venv\\Scripts\\Activate.ps1
 ```
 
 
 
-### 3\. Нет секретного ключа
+### 3. Нет секретного ключа
 
-**Что видно:** `ImproperlyConfigured: Set DJANGO\\\_SECRET\\\_KEY`.
+**Что видно:** `ImproperlyConfigured: Set DJANGO_SECRET_KEY`.
 
 **Почему:** переменная не задана. Она действует только в том окне PowerShell, где её задали.
 
@@ -45,9 +45,9 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
 
-### 4\. Не найден модуль
+### 4. Не найден модуль
 
-**Что видно:** `ModuleNotFoundError: No module named 'django'` (или `rest\\\_framework`, `whitenoise`).
+**Что видно:** `ModuleNotFoundError: No module named 'django'` (или `rest_framework`, `whitenoise`).
 
 **Почему:** окружение не активировано или библиотеки не установлены.
 
@@ -55,7 +55,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
 
-### 5\. Нет таблиц в базе
+### 5. Нет таблиц в базе
 
 **Что видно:** `no such table` (SQLite) или `relation ... does not exist` (PostgreSQL).
 
@@ -65,27 +65,27 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
 
-### 6\. На Render «Bad Request (400)»
+### 6. На Render «Bad Request (400)»
 
 **Что видно:** белая страница «Bad Request (400)».
 
-**Почему:** адрес сайта не указан или указан неверно в `DJANGO\\\_ALLOWED\\\_HOSTS`.
+**Почему:** адрес сайта не указан или указан неверно в `DJANGO_ALLOWED_HOSTS`.
 
 **Что делать:** в Environment указать адрес без `https://`, например `database-pz8-django-project.onrender.com`.
 
 
 
-### 7\. Ошибка 403 «CSRF»
+### 7. Ошибка 403 «CSRF»
 
 **Что видно:** 403 при входе или при создании заявки и брони, особенно на Render.
 
-**Почему:** адрес сайта не указан в `DJANGO\\\_CSRF\\\_TRUSTED\\\_ORIGINS`, или в запросе нет токена.
+**Почему:** адрес сайта не указан в `DJANGO_CSRF_TRUSTED_ORIGINS`, или в запросе нет токена.
 
-**Что делать:** указать адрес с `https://` в `DJANGO\\\_CSRF\\\_TRUSTED\\\_ORIGINS` и обновить страницу.
+**Что делать:** указать адрес с `https://` в `DJANGO_CSRF_TRUSTED_ORIGINS` и обновить страницу.
 
 
 
-### 8\. Сайт без оформления
+### 8. Сайт без оформления
 
 **Что видно:** страница открывается, но без стилей.
 
@@ -95,7 +95,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
 
-### 9\. API отвечает 403
+### 9. API отвечает 403
 
 **Что видно:** `{"detail": "Authentication credentials were not provided."}`.
 
@@ -105,7 +105,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
 
-### 10\. Пустые списки
+### 10. Пустые списки
 
 **Что видно:** нет оборудования и категорий.
 
@@ -115,7 +115,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
 
-### 11\. У методиста нет кнопки «Подтвердить»
+### 11. У методиста нет кнопки «Подтвердить»
 
 **Что видно:** на странице бронирования нет кнопок подтверждения.
 
@@ -125,9 +125,9 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 
 
-### 12\. Предупреждение про staticfiles при тестах
+### 12. Предупреждение про staticfiles при тестах
 
-**Что видно:** `No directory at: ...\\\\staticfiles\\\\` при `python manage.py test bookings`.
+**Что видно:** `No directory at: ...\staticfiles\` при `python manage.py test bookings`.
 
 **Почему:** папка `staticfiles` появляется только после `collectstatic`.
 
