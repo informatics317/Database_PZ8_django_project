@@ -4,7 +4,7 @@
 Страницы получают данные через REST API (Django REST Framework) без перезагрузки.
 
 * Сайт: https://database-pz8-django-project.onrender.com
-* Репозиторий: https://github.com/informatics317/Database\_PZ8\_django\_project
+* Репозиторий: https://github.com/informatics317/Database_PZ8_django_project
 
 ### Содержание
 
@@ -80,7 +80,7 @@
 
 ```
 text
-django\\\\\\\_auth/
+django_auth/
 |--- manage.py                 запуск команд Django
 |--- config/                   настройки (settings.py), главные адреса (urls.py), wsgi.py, asgi.py
 |--- accounts/                 учебный портал и вход на сайт
@@ -104,7 +104,7 @@ django\\\\\\\_auth/
 
 
 
-В Git не попадают: `.venv/` (виртуальное окружение), `db.sqlite3` (локальная база), `staticfiles/`, `node\\\\\\\_modules/`, `.idea/`.
+В Git не попадают: `.venv/` (виртуальное окружение), `db.sqlite3` (локальная база), `staticfiles/`, `node_modules/`, `.idea/`.
 
 
 
@@ -130,10 +130,10 @@ git --version
 Powershell:
 
 ```
-git clone https://github.com/informatics317/Database\\\\\\\_PZ8\\\\\\\_django\\\\\\\_project.git django\\\\\\\_auth
-cd django\\\\\\\_auth
+git clone https://github.com/informatics317/Database_PZ8_django_project.git django_auth
+cd django_auth
 python -m venv .venv
-.\\\\\\\\.venv\\\\\\\\Scripts\\\\\\\\Activate.ps1
+.\\.venv\\Scripts\\Activate.ps1
 ```
 
 
@@ -157,23 +157,23 @@ pip install -r requirements.txt
 
 |**Переменная**|**Зачем нужна**|**Пример для локального запуска**|
 |-|-|-|
-|`DJANGO\\\\\\\_SECRET\\\\\\\_KEY`|Секретный ключ Django, без него проект не запустится|`local-secret-key-for-learning`|
-|`DJANGO\\\\\\\_DEBUG`|Режим отладки (по умолчанию `False`)|`True`|
-|`DJANGO\\\\\\\_ALLOWED\\\\\\\_HOSTS`|Адреса, на которых сайт работает, через запятую|`127.0.0.1,localhost`|
-|`DJANGO\\\\\\\_CSRF\\\\\\\_TRUSTED\\\\\\\_ORIGINS`|Адреса сайта с `https://` для защиты форм|не нужна|
-|`DATABASE\\\\\\\_URL`|Адрес базы PostgreSQL; если не задан, берётся SQLite|не задаем|
+|`DJANGO_SECRET_KEY`|Секретный ключ Django, без него проект не запустится|`local-secret-key-for-learning`|
+|`DJANGO_DEBUG`|Режим отладки (по умолчанию `False`)|`True`|
+|`DJANGO_ALLOWED_HOSTS`|Адреса, на которых сайт работает, через запятую|`127.0.0.1,localhost`|
+|`DJANGO_CSRF_TRUSTED_ORIGINS`|Адреса сайта с `https://` для защиты форм|не нужна|
+|`DATABASE_URL`|Адрес базы PostgreSQL; если не задан, берётся SQLite|не задаем|
 
 Задаём переменные в PowerShell (они действуют только в этом окне):
 
 ```
-$env:DJANGO\\\\\\\_SECRET\\\\\\\_KEY = "local-secret-key-for-learning"
-$env:DJANGO\\\\\\\_DEBUG = "True"
-$env:DJANGO\\\\\\\_ALLOWED\\\\\\\_HOSTS = "127.0.0.1,localhost"
+$env:DJANGO_SECRET_KEY = "local-secret-key-for-learning"
+$env:DJANGO_DEBUG = "True"
+$env:DJANGO_ALLOWED_HOSTS = "127.0.0.1,localhost"
 ```
 
 
 
-В новом окне PowerShell их нужно задать заново. Настоящие значения секретов (особенно `DATABASE\\\\\\\_URL`) нельзя нигде отображать.
+В новом окне PowerShell их нужно задать заново. Настоящие значения секретов (особенно `DATABASE_URL`) нельзя нигде отображать.
 
 
 
@@ -271,8 +271,8 @@ PATCH /api/tickets/5/
 2. Создать Web Service из репозитория GitHub (ветка `main`).
 Build Command: `bash build.sh`. Start Command: `gunicorn config.wsgi:application`.
 3. В разделе Environment задать пять переменных из раздела «Настройка».
-`DATABASE\\\\\\\_URL` здесь равна Internal Database URL, а `DJANGO\\\\\\\_DEBUG` равна `False`.
-4. Один раз выполнить миграции в облачной базе с компьютера: подставить External Database URL в `DATABASE\\\\\\\_URL` только на время команды python manage.py migrate.
+`DATABASE_URL` здесь равна Internal Database URL, а `DJANGO_DEBUG` равна `False`.
+4. Один раз выполнить миграции в облачной базе с компьютера: подставить External Database URL в `DATABASE_URL` только на время команды python manage.py migrate.
 5. Проверить `/healthz/` и войти на сайт.
 
 
@@ -289,11 +289,11 @@ Build Command: `bash build.sh`. Start Command: `gunicorn config.wsgi:application
 
 |**Что видно**|**Почему так**|**Что сделать**|
 |-|-|-|
-|`ImproperlyConfigured: Set DJANGO\\\\\\\_SECRET\\\\\\\_KEY`|Не задан секретный ключ|Задать `$env:DJANGO\\\\\\\_SECRET\\\\\\\_KEY`|
-|На Render «Bad Request (400)»|Адрес сайта не указан в `DJANGO\\\\\\\_ALLOWED\\\\\\\_HOSTS`|Исправить значение (без `https://`)|
+|`ImproperlyConfigured: Set DJANGO_SECRET_KEY`|Не задан секретный ключ|Задать `$env:DJANGO_SECRET_KEY`|
+|На Render «Bad Request (400)»|Адрес сайта не указан в `DJANGO_ALLOWED_HOSTS`|Исправить значение (без `https://`)|
 |Сайт без оформления|Не собрана статика|Проверить `collectstatic` в `build.sh`, сделать Manual Deploy|
 |`no such table` или `relation does not exist`|Не сделаны миграции|Выполнить python manage.py migrate|
-|На Render ошибка 403 «CSRF»|Неверный `DJANGO\\\\\\\_CSRF\\\\\\\_TRUSTED\\\\\\\_ORIGINS`|Указать адрес сайта с `https://`|
+|На Render ошибка 403 «CSRF»|Неверный `DJANGO_CSRF_TRUSTED_ORIGINS`|Указать адрес сайта с `https://`|
 |Списки оборудования и категорий пустые|В новой базе нет данных|Добавить данные в `/admin/`|
 
 
