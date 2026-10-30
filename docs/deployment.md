@@ -112,11 +112,11 @@ python manage.py migrate
 
 |**Переменная**|**Для чего**|**Значение**|
 |-|-|-|
-|`DJANGO\_SECRET\_KEY`|Секретный ключ Django|Длинная случайная строка|
-|`DJANGO\_DEBUG`|Режим отладки|`False`|
-|`DJANGO\_ALLOWED\_HOSTS`|Адрес сайта без `https://`|`database-pz8-django-project.onrender.com`|
-|`DJANGO\_CSRF\_TRUSTED\_ORIGINS`|Адрес сайта с `https://`|`https://database-pz8-django-project.onrender.com`|
-|`DATABASE\_URL`|Адрес базы данных|**Internal Database URL**|
+|`DJANGO_SECRET_KEY`|Секретный ключ Django|Длинная случайная строка|
+|`DJANGO_DEBUG`|Режим отладки|`False`|
+|`DJANGO_ALLOWED_HOSTS`|Адрес сайта без `https://`|`database-pz8-django-project.onrender.com`|
+|`DJANGO_CSRF_TRUSTED_ORIGINS`|Адрес сайта с `https://`|`https://database-pz8-django-project.onrender.com`|
+|`DATABASE_URL`|Адрес базы данных|**Internal Database URL**|
 
 Internal Database URL нужен потому, что сайт и база находятся на Render в одной сети. Вставляйте его только на сайте Render, в Git его записывать нельзя.
 
@@ -156,7 +156,7 @@ Remove-Item Env:DATABASE_URL
 
 
 
-### 7\. Проверка
+### 7. Проверка
 
 1. `/healthz/` отвечает `{"status": "ok"}`.
 2. На `/accounts/login/` можно войти, страница оформлена.
