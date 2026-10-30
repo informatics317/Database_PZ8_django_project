@@ -9,16 +9,16 @@
 ```
 mermaid
 flowchart LR
-    subgraph B\\\\\\\\\\\\\\\[Браузер]
-        P\\\\\\\\\\\\\\\[Страницы: Tabler + JavaScript fetch]
+    subgraph B[Браузер]
+        P[Страницы: Tabler + JavaScript fetch]
     end
-    subgraph S\\\\\\\\\\\\\\\[Сервер приложений - Render]
-        G\\\\\\\\\\\\\\\[Gunicorn]
-        W\\\\\\\\\\\\\\\[WhiteNoise - статика]
-        D\\\\\\\\\\\\\\\[Django]
-        A\\\\\\\\\\\\\\\[REST API - DRF]
+    subgraph S[Сервер приложений - Render]
+        G[Gunicorn]
+        W[WhiteNoise - статика]
+        D[Django]
+        A[REST API - DRF]
     end
-    DB\\\\\\\\\\\\\\\[(База данных<br>PostgreSQL или SQLite)]
+    DB[(База данных<br>PostgreSQL или SQLite)]
     P -- "HTTPS: страницы и JSON" --> G
     G --> W
     G --> D
@@ -66,7 +66,7 @@ flowchart LR
 ## Границы между частями
 
 * Браузер и сервер общаются только по HTTP: страницы приходят как HTML, данные как JSON. Сервер проверяет всё, что прислал браузер.
-* С базой работает только Django через ORM. Адрес базы берётся из переменной `DATABASE\\\\\\\\\\\\\\\_URL`.
+* С базой работает только Django через ORM. Адрес базы берётся из переменной `DATABASE_URL`.
 * Все страницы и весь API закрыты без входа. Открыт только `/healthz/`.
 * Студент видит только свои заявки и брони, методист и администратор видят все.
 * Секреты (ключ, адрес базы) лежат в переменных окружения, а не в коде.
@@ -85,7 +85,7 @@ flowchart LR
 |-|-|-|
 |Сервер|`runserver`|Gunicorn|
 |База|SQLite (`db.sqlite3`)|PostgreSQL|
-|`DJANGO\\\\\\\\\\\\\\\_DEBUG`|`True`|`False`|
+|`DJANGO_DEBUG`|`True`|`False`|
 
 Локальная и облачная базы – разные. Данные между ними не переносятся.
 
