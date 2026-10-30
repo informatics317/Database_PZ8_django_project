@@ -8,17 +8,17 @@
 
 ## Часть 1. Запуск на компьютере
 
-Нужны Python 3.12 и Git.
+Нужны Python 3.13 и Git.
 
 1. Скачайте проект и проверьте, что скачалось всё:
 
 ```
-git clone https://github.com/informatics317/Database\_PZ8\_django\_project.git django\_auth
+git clone https://github.com/informatics317/Database_PZ8_django_project.git django_auth
    cd django\_auth
    dir
    ```
 
-   Если Git пишет `already exists and is not an empty directory`, такая папка уже есть. Клонируйте под другим именем (например `django\_auth\_new`) или переименуйте старую папку.
+   Если Git пишет `already exists and is not an empty directory`, такая папка уже есть. Клонируйте под другим именем (например `django_auth_new`) или переименуйте старую папку.
 
 
 
@@ -35,12 +35,12 @@ python -m venv .venv
 3. Задайте переменные окружения:
 
 ```
-$env:DJANGO\_SECRET\_KEY = "local-secret-key-for-learning"
-   $env:DJANGO\_DEBUG = "True"
-   $env:DJANGO\_ALLOWED\_HOSTS = "127.0.0.1,localhost"
+$env:DJANGO_SECRET_KEY = "local-secret-key-for-learning"
+   $env:DJANGO_DEBUG = "True"
+   $env:DJANGO_ALLOWED_HOSTS = "127.0.0.1,localhost"
    ```
 
-   `DATABASE\_URL` не задаём: тогда используется SQLite.
+   `DATABASE_URL` не задаём: тогда используется SQLite.
 
 
 
@@ -57,7 +57,7 @@ python manage.py migrate
 
 
 5. Добавьте тестовые данные в админ-панели (`/admin/`): группу «Методист», категории заявок, оборудование (проектор 3, компьютер 10, микрофон 5) и двух пользователей (студент и методист в группе «Методист»).
-6. Проверьте работу по разделу «Проверка» в [README.md](../README.md).
+6. Проверьте работу по разделу «Проверка» в [README.md](README.md).
 
 
 
@@ -80,7 +80,7 @@ python manage.py migrate
 
 
 
-### 1\. База PostgreSQL
+### 1. База PostgreSQL
 
 1. В Render выберите **New → PostgreSQL**, тариф Free, запомните регион.
 2. Когда база будет готова, на её странице появятся два адреса:
@@ -92,7 +92,7 @@ python manage.py migrate
 
 
 
-### 2\. Web Service
+### 2. Web Service
 
 1. **New → Web Service**, выберите репозиторий и ветку `main`.
 2. Укажите команды:
@@ -106,7 +106,7 @@ python manage.py migrate
 
 
 
-### 3\. Переменные окружения
+### 3. Переменные окружения
 
 В разделе **Environment** добавьте пять переменных:
 
@@ -122,23 +122,23 @@ Internal Database URL нужен потому, что сайт и база на�
 
 
 
-### 4\. Сборка
+### 4. Сборка
 
 После сохранения Render сам соберёт и запустит сайт. Ход виден в разделе **Logs**. Сайт готов, когда статус стал **Live**.
 
 
 
-### 5\. Миграции
+### 5. Миграции
 
 Выполните один раз с компьютера, временно подставив **External Database URL**:
 
 ```
 .\\.venv\\Scripts\\Activate.ps1
-$env:DJANGO\_SECRET\_KEY = "any-value-for-migration"
-$env:DATABASE\_URL = "<External Database URL из Render>"
+$env:DJANGO_SECRET_KEY = "any-value-for-migration"
+$env:DATABASE_URL = "<External Database URL из Render>"
 python manage.py migrate
 python manage.py createsuperuser
-Remove-Item Env:DATABASE\_URL
+Remove-Item Env:DATABASE_URL
 ```
 
 * Вместо `<External Database URL из Render>` вставьте настоящий адрес. Нигде его не публикуйте.
@@ -148,7 +148,7 @@ Remove-Item Env:DATABASE\_URL
 
 
 
-### 6\. Данные
+### 6. Данные
 
 Облачная база пустая. Зайдите в `/admin/` на сайте и добавьте группу «Методист», категории, оборудование и пользователей.
 
