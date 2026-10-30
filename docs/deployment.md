@@ -14,7 +14,7 @@
 
 ```
 git clone https://github.com/informatics317/Database_PZ8_django_project.git django_auth
-   cd django\_auth
+   cd django_auth
    dir
    ```
 
