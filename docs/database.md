@@ -52,7 +52,7 @@ erDiagram
     DEPARTMENT ||--o{ ACADEMICGROUP : department
     DEPARTMENT ||--o{ COURSE : department
     DEPARTMENT ||--o{ STUDENTPROFILE : department
-    ACADEMICGROUP ||--o{ STUDENTPROFILE : academic\_group
+    ACADEMICGROUP ||--o{ STUDENTPROFILE : academic_group
     USER ||--o| STUDENTPROFILE : user
     STUDENTPROFILE }o--o{ COURSE : courses
 ```
@@ -66,7 +66,7 @@ erDiagram
 |**Модель**|**Главные поля**|**Связи**|
 |-|-|-|
 |`Category` (категория)|`id`, `name`|У категории много заявок|
-|`Ticket` (заявка)|`id`, `title`, `description`, `status` (`new`, `progress`, `done`), `created\_at`|`category` (нельзя удалить категорию с заявками), `owner` (автор заявки)|
+|`Ticket` (заявка)|`id`, `title`, `description`, `status` (`new`, `progress`, `done`), `created_at`|`category` (нельзя удалить категорию с заявками), `owner` (автор заявки)|
 
 
 
@@ -75,8 +75,8 @@ erDiagram
 |**Модель**|**Главные поля**|**Связи**|
 |-|-|-|
 |`Equipment` (оборудование)|`id`, `name`, `total` (всего), `available` (свободно)|У оборудования много броней|
-|`Booking` (бронь)|`id`, `quantity`, `purpose`, `status` (`created`, `confirmed`, `completed`, `cancelled`), `created\_at`|`equipment` (нельзя удалить оборудование с бронями), `owner` (кто забронировал)|
-|`BookingEvent` (история)|`id`, `action`, `created\_at`|`booking` (к какой брони относится), `actor` (кто сделал действие)|
+|`Booking` (бронь)|`id`, `quantity`, `purpose`, `status` (`created`, `confirmed`, `completed`, `cancelled`), `created_at`|`equipment` (нельзя удалить оборудование с бронями), `owner` (кто забронировал)|
+|`BookingEvent` (история)|`id`, `action`, `created_at`|`booking` (к какой брони относится), `actor` (кто сделал действие)|
 
 
 
